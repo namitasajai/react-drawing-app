@@ -6,8 +6,8 @@ const Canvas = ({ color, width, erasing }) => {
     useEffect(() => {
         const canvas = canvasRef.current;
         const context = canvas.getContext('2d');
-        context.strokeStyle = erasing ? '#FFFFFF' : color;  // Use white color for erasing
-        context.lineWidth = erasing ? width * 2 : width;    // Double the width for erasing mode
+        context.strokeStyle = erasing ? '#FFFFFF' : color;
+        context.lineWidth = erasing ? width * 2 : width;  
     }, [color, width, erasing]);
 
     const startDrawing = ({ nativeEvent }) => {
@@ -16,7 +16,7 @@ const Canvas = ({ color, width, erasing }) => {
         const { offsetX, offsetY } = nativeEvent;
         context.beginPath();
         context.moveTo(offsetX, offsetY);
-        context.globalCompositeOperation = erasing ? 'destination-out' : 'source-over';  // Use different composite operation for erasing
+        context.globalCompositeOperation = erasing ? 'destination-out' : 'source-over'; 
         canvas.isDrawing = true;
     };
 
